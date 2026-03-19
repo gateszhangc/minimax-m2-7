@@ -19,6 +19,7 @@ export default defineConfig({
     env: {
       ...process.env,
       NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: "G-TEST1234567",
+      NEXT_PUBLIC_CLARITY_PROJECT_ID: "vy0jj0bjwf",
       NEXT_PUBLIC_PROJECT_NAME: "minimax-m2-7",
       NEXT_PUBLIC_WEB_URL: "http://127.0.0.1:3417",
     },

@@ -19,3 +19,4 @@ export const siteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_WEB_URL);
 export const siteHost = new URL(siteUrl).host;
 export const projectName = process.env.NEXT_PUBLIC_PROJECT_NAME?.trim() || "minimax-m2-7";
 export const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim() || "";
+export const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim() || "";

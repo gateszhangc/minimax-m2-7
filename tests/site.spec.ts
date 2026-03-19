@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { faqItems } from "../lib/site-content";
 
 const gaMeasurementId = "G-TEST1234567";
+const clarityProjectId = "vy0jj0bjwf";
 
 const routes = [
   {
@@ -117,6 +118,7 @@ test("home exposes analytics, social metadata, and structured data", async ({ pa
   await expect(
     page.locator(`script[src*="googletagmanager.com/gtag/js?id=${gaMeasurementId}"]`),
   ).toHaveCount(1);
+  await expect(page.locator(`script[src*="clarity.ms/tag/${clarityProjectId}"]`)).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
     /\/opengraph-image/,
@@ -131,8 +133,13 @@ test("home exposes analytics, social metadata, and structured data", async ({ pa
   expect(structuredDataText).toContain('"@type":"WebSite"');
   expect(structuredDataText).toContain('"url":"http://127.0.0.1:3417"');
 
+  await expect
+    .poll(async () => page.evaluate(() => typeof Reflect.get(window, "clarity")))
+    .toBe("function");
+
   const html = await page.content();
   expect(html).toContain(`gtag('config', '${gaMeasurementId}')`);
+  expect(html).toContain(`"clarity", "script", "${clarityProjectId}"`);
 });
 
 test("faq accordion expands the selected answer", async ({ page }) => {

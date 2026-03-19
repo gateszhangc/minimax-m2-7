@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { GoogleAnalytics } from "@/components/google-analytics";
+import { AnalyticsScripts } from "@/components/google-analytics";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
@@ -70,7 +70,7 @@ export default function RootLayout({
       className={`${plexSans.variable} ${bricolage.variable} dark h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
-        <GoogleAnalytics />
+        <AnalyticsScripts />
         <StructuredData data={buildWebsiteSchema()} />
         <div className="pointer-events-none fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(145,198,255,0.12),transparent_28%),linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] [background-size:100%_100%,72px_72px,72px_72px]" />
