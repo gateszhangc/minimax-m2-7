@@ -1,7 +1,11 @@
 import Script from "next/script";
-import { googleAnalyticsId } from "@/lib/site-config";
+import { connection } from "next/server";
 
-export function GoogleAnalytics() {
+export async function GoogleAnalytics() {
+  await connection();
+
+  const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim() || "";
+
   if (!googleAnalyticsId) {
     return null;
   }
