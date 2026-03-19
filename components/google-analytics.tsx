@@ -1,10 +1,7 @@
 import Script from "next/script";
-import { connection } from "next/server";
 import { clarityProjectId, googleAnalyticsId } from "@/lib/site-config";
 
 export async function AnalyticsScripts() {
-  await connection();
-
   if (!googleAnalyticsId && !clarityProjectId) {
     return null;
   }
