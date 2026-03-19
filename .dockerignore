@@ -1,0 +1,11 @@
+.git
+.gitignore
+.next
+node_modules
+playwright-report
+test-results
+coverage
+npm-debug.log*
+.env*
+task
+tempapp
