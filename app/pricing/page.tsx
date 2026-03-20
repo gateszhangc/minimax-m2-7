@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight, Gauge, Layers2, Wallet } from "lucide-react";
 import { Panel } from "@/components/marketing/panel";
 import { SectionHeading } from "@/components/marketing/section-heading";
@@ -153,17 +154,15 @@ export default function PricingPage() {
               >
                 Open Platform
               </a>
-              <a
-                href={officialLinks.developerDocs}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/official-links"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
                   "h-12 rounded-full border-white/14 bg-white/4 px-6 text-sm font-semibold text-white hover:bg-white/9",
                 )}
               >
-                Read Docs
-              </a>
+                Official Links Hub
+              </Link>
             </div>
           </Panel>
         </section>

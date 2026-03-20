@@ -10,12 +10,13 @@ import { cn } from "@/lib/utils";
 import {
   accessPaths,
   benchmarkCards,
+  developerSurfaceRows,
   faqItems,
   heroSignals,
   highlightCards,
   homeKeywords,
   officialLinks,
-  showcaseCards,
+  researchPaths,
   toolCompatibility,
 } from "@/lib/site-content";
 
@@ -48,7 +49,7 @@ export default function Home() {
             <span className="mb-5 inline-flex w-fit rounded-full border border-white/12 bg-white/6 px-4 py-1 text-[11px] font-semibold tracking-[0.28em] text-white/70 uppercase">
               Text model / M2.7
             </span>
-            <h1 className="max-w-4xl font-display text-5xl leading-[0.95] font-semibold tracking-[-0.05em] text-balance text-white sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl font-display text-5xl leading-[1.04] font-semibold tracking-[-0.05em] text-balance text-white sm:text-6xl sm:leading-[1.02] lg:text-7xl lg:leading-[1]">
               MiniMax M2.7 guide for API access, benchmarks, pricing, and highspeed workflows.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
@@ -91,57 +92,73 @@ export default function Home() {
             </div>
           </div>
 
-          <Panel className="relative overflow-hidden p-0">
+          <Panel className="relative min-w-0 overflow-hidden" data-testid="hero-insights-panel">
             <div className="absolute inset-x-0 top-0 h-28 bg-[radial-gradient(circle_at_top,rgba(109,224,255,0.34),transparent_72%)]" />
-            <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="border-b border-white/8 p-6 lg:border-r lg:border-b-0 lg:p-8">
+            <div className="relative min-w-0 space-y-6 p-6 sm:p-7 lg:p-8">
+              <div className="min-w-0">
                 <p className="text-xs font-semibold tracking-[0.3em] text-white/48 uppercase">
                   Benchmark snapshot
                 </p>
-                <div className="mt-5 grid gap-3">
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   {benchmarkCards.map((card) => (
                     <div
                       key={card.label}
-                      className="rounded-2xl border border-white/8 bg-white/[0.045] p-4"
+                      className="flex min-w-0 flex-col rounded-2xl border border-white/8 bg-white/[0.045] p-4 sm:p-5"
                     >
-                      <div className="flex items-end justify-between gap-3">
-                        <span className="text-sm text-white/64">{card.label}</span>
-                        <span className="font-display text-3xl font-semibold tracking-[-0.06em] text-white">
-                          {card.value}
-                        </span>
-                      </div>
-                      <p className="mt-2 text-sm leading-6 text-white/52">{card.note}</p>
+                      <span className="text-sm text-white/64">{card.label}</span>
+                      <span className="mt-3 font-display text-2xl font-semibold tracking-[-0.06em] text-white sm:text-3xl">
+                        {card.value}
+                      </span>
+                      <p className="mt-3 text-sm leading-6 text-white/52">{card.note}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="p-6 lg:p-8">
+
+              <div className="min-w-0 border-t border-white/8 pt-6">
                 <p className="text-xs font-semibold tracking-[0.3em] text-white/48 uppercase">
                   Developer surface
                 </p>
-                <div className="mt-5 space-y-4 rounded-[1.75rem] border border-white/8 bg-[#09111b] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                  <div className="flex items-center justify-between text-xs text-white/42">
-                    <span>chatcompletion_v2</span>
+                <div
+                  className="mt-5 min-w-0 rounded-[1.75rem] border border-white/8 bg-[#09111b] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                  data-testid="developer-surface-card"
+                >
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-white/42">
+                    <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] tracking-[0.18em] text-cyan-100/78 uppercase">
+                      chatcompletion_v2
+                    </span>
                     <span>v2.1 API connected</span>
                   </div>
-                  <div className="space-y-2 font-mono text-sm leading-7 text-cyan-100/86">
-                    <p>POST https://api.minimax.io/v1/text/chatcompletion_v2</p>
-                    <p>{'model: "MiniMax-M2.7"'}</p>
-                    <p>{'model: "MiniMax-M2.7-highspeed"'}</p>
-                    <p>{'headers: { Authorization: "Bearer <token>" }'}</p>
+                  <div className="mt-4 grid gap-3">
+                    {developerSurfaceRows.map((row) => (
+                      <div
+                        key={row.label}
+                        className="grid min-w-0 gap-2 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 sm:grid-cols-[5.5rem_minmax(0,1fr)] sm:gap-3"
+                      >
+                        <p className="text-[11px] font-semibold tracking-[0.22em] text-white/44 uppercase">
+                          {row.label}
+                        </p>
+                        <p className="min-w-0 font-mono text-sm leading-6 text-cyan-100/86 [overflow-wrap:anywhere]">
+                          {row.value}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="mt-6 grid gap-3">
+
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {heroSignals.map((signal) => (
                     <div
                       key={signal.label}
-                      className="flex items-start justify-between gap-4 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3"
+                      className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-4 sm:px-5"
                     >
-                      <div>
-                        <p className="text-sm font-medium text-white">{signal.label}</p>
-                        <p className="mt-1 text-sm leading-6 text-white/52">{signal.note}</p>
-                      </div>
-                      <span className="text-sm font-semibold text-primary">{signal.value}</span>
+                      <p className="text-xs font-semibold tracking-[0.22em] text-white/46 uppercase">
+                        {signal.label}
+                      </p>
+                      <p className="mt-3 font-display text-3xl font-semibold tracking-[-0.05em] text-primary">
+                        {signal.value}
+                      </p>
+                      <p className="mt-3 text-sm leading-6 text-white/52">{signal.note}</p>
                     </div>
                   ))}
                 </div>
@@ -224,34 +241,33 @@ export default function Home() {
 
         <section className="space-y-8">
           <SectionHeading
-            eyebrow="Showcases"
-            title="MiniMax M2.7 website generation examples surfaced on the launch page."
-            description="Instead of dumping screenshots, the site uses editorial cards to show range across culture, commerce, charity, and personal-brand execution."
+            eyebrow="Research map"
+            title="MiniMax M2.7 research paths that keep the site aligned with real developer search intent."
+            description="These internal routes turn the homepage into a decision map: benchmark interpretation, workflow fit, pricing research, and the official MiniMax surfaces."
           />
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-            {showcaseCards.map((card, index) => (
-              <Panel
-                key={card.title}
-                className={cn(
-                  "group min-h-[280px] overflow-hidden p-0",
-                  index === 0 && "md:col-span-2 xl:col-span-2",
-                  index === 3 && "md:col-span-2 xl:col-span-1",
-                )}
-              >
-                <div className={cn("h-full p-5 sm:p-6", card.className)}>
-                  <div className="flex h-full flex-col justify-between rounded-[1.35rem] border border-black/10 bg-black/12 p-5 backdrop-blur-sm">
-                    <p className="text-xs font-semibold tracking-[0.28em] text-white/62 uppercase">
-                      Single-shot example
-                    </p>
-                    <div>
-                      <h3 className="font-display text-2xl font-semibold tracking-[-0.04em] text-white">
-                        {card.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-6 text-white/78">{card.description}</p>
+          <div className="grid gap-5 md:grid-cols-2">
+            {researchPaths.map((card) => (
+              <Link key={card.title} href={card.href} className="group block h-full">
+                <Panel className="h-full overflow-hidden p-0 transition-transform duration-200 group-hover:-translate-y-1">
+                  <div className={cn("h-full p-5 sm:p-6", card.className)}>
+                    <div className="flex h-full flex-col justify-between rounded-[1.35rem] border border-black/10 bg-black/12 p-5 backdrop-blur-sm">
+                      <div>
+                        <p className="text-xs font-semibold tracking-[0.28em] text-white/62 uppercase">
+                          {card.eyebrow}
+                        </p>
+                        <h2 className="mt-4 font-display text-3xl leading-tight font-semibold tracking-[-0.04em] text-white">
+                          {card.title}
+                        </h2>
+                        <p className="mt-3 max-w-xl text-sm leading-6 text-white/78">{card.description}</p>
+                      </div>
+                      <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white">
+                        {card.cta}
+                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Panel>
+                </Panel>
+              </Link>
             ))}
           </div>
         </section>

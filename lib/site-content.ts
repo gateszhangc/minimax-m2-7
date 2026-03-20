@@ -11,6 +11,11 @@ export type MetricCard = {
   note: string;
 };
 
+export type DeveloperSurfaceRow = {
+  label: string;
+  value: string;
+};
+
 export type FeatureCard = {
   eyebrow: string;
   title: string;
@@ -25,6 +30,15 @@ export type AccessPath = {
   points: string[];
   cta: string;
   href: string;
+};
+
+export type GuideCard = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  href: string;
+  cta: string;
+  className?: string;
 };
 
 export type FaqItem = {
@@ -49,7 +63,7 @@ export const navItems: NavItem[] = [
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
+  { href: "/official-links", label: "Official Links" },
 ];
 
 export const homeKeywords = [
@@ -92,6 +106,25 @@ export const heroSignals = [
     label: "Model variants",
     value: "2",
     note: "MiniMax-M2.7 and MiniMax-M2.7-highspeed are described as result-equivalent access options.",
+  },
+];
+
+export const developerSurfaceRows: DeveloperSurfaceRow[] = [
+  {
+    label: "Endpoint",
+    value: "POST /v1/text/chatcompletion_v2",
+  },
+  {
+    label: "API",
+    value: "v2.1 connected",
+  },
+  {
+    label: "Models",
+    value: "MiniMax-M2.7 / MiniMax-M2.7-highspeed",
+  },
+  {
+    label: "Auth",
+    value: "Bearer token",
   },
 ];
 
@@ -155,31 +188,69 @@ export const highlightCards: FeatureCard[] = [
   },
 ];
 
-export const showcaseCards = [
+export const researchPaths: GuideCard[] = [
   {
-    title: "Music Library Website",
-    description: "A clean editorial browsing concept used to signal front-end generation quality.",
-    className: "bg-[linear-gradient(160deg,#355c7d_0%,#6c5b7b_42%,#c06c84_100%)]",
+    eyebrow: "Benchmarks",
+    title: "Read benchmark claims with context",
+    description:
+      "Use the FAQ page to interpret SWE-Pro, Terminal Bench 2, VIBE-Pro, and highspeed claims before treating them as product proof.",
+    href: "/faq",
+    cta: "Open FAQ",
+    className: "bg-[linear-gradient(160deg,#1b2e40_0%,#355c7d_48%,#68a6d8_100%)]",
   },
   {
-    title: "Wildlife Charity Website",
-    description: "A softer mission-led layout that showcases range outside technical design systems.",
-    className: "bg-[linear-gradient(160deg,#13311d_0%,#2f6a44_48%,#9fcc7d_100%)]",
+    eyebrow: "Use cases",
+    title: "Match workflows to the strongest M2.7 fits",
+    description:
+      "The features page narrows the story to coding, agent work, document editing, and complex tool execution instead of generic AI copy.",
+    href: "/features",
+    cta: "Review features",
+    className: "bg-[linear-gradient(160deg,#102532_0%,#1d4957_48%,#7cd4d3_100%)]",
   },
   {
-    title: "Fashion Shopping Website",
-    description: "A more commerce-forward visual language that still keeps strong layout polish.",
-    className: "bg-[linear-gradient(150deg,#1d1428_0%,#50376d_50%,#f4a1d4_100%)]",
+    eyebrow: "Pricing",
+    title: "Verify pricing and highspeed access paths",
+    description:
+      "The pricing page explains where to confirm live token plans and how MiniMax positions the highspeed variant for faster throughput.",
+    href: "/pricing",
+    cta: "Review pricing",
+    className: "bg-[linear-gradient(150deg,#23152f_0%,#4c2f69_50%,#d69fea_100%)]",
   },
   {
-    title: "Natural History Museum Website",
-    description: "A content-rich information architecture example with strong curation cues.",
-    className: "bg-[linear-gradient(150deg,#1b2e40_0%,#47658a_45%,#d7b17c_100%)]",
+    eyebrow: "Official sources",
+    title: "Jump to the right MiniMax surface",
+    description:
+      "The official links page turns the API platform, docs, MiniMax Agent, and model overview into one clean decision map.",
+    href: "/official-links",
+    cta: "Open official links",
+    className: "bg-[linear-gradient(150deg,#142017_0%,#27563d_48%,#b5d96f_100%)]",
+  },
+];
+
+export const siteGuideLinks: GuideCard[] = [
+  {
+    eyebrow: "Capabilities",
+    title: "Features breakdown",
+    description:
+      "Map public claims to coding, agent, editing, and environment workflows before deciding whether the model fits your use case.",
+    href: "/features",
+    cta: "Open features",
   },
   {
-    title: "Photographer Homepage",
-    description: "A personal-brand concept that signals one-shot website versatility.",
-    className: "bg-[linear-gradient(160deg,#231f20_0%,#4f5d75_48%,#ef8354_100%)]",
+    eyebrow: "Evaluation",
+    title: "Pricing and access paths",
+    description:
+      "Use the pricing page to decide whether you need the direct API route, token-plan research, or a quicker agent-based evaluation path.",
+    href: "/pricing",
+    cta: "Open pricing",
+  },
+  {
+    eyebrow: "Evidence",
+    title: "FAQ and benchmark context",
+    description:
+      "Cross-check the most repeated search questions before you leave for the official docs so benchmark and highspeed claims stay grounded.",
+    href: "/faq",
+    cta: "Open FAQ",
   },
 ];
 
@@ -339,7 +410,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What is the difference between MiniMax M2.7 and MiniMax-M2.7-highspeed?",
     answer:
-      "Yes. The official page describes both MiniMax-M2.7 and MiniMax-M2.7-highspeed, saying they produce identical results while the highspeed version offers faster speed.",
+      "MiniMax says MiniMax-M2.7 and MiniMax-M2.7-highspeed produce the same results, while the highspeed variant is positioned as the faster-serving option.",
   },
   {
     question: "Which workflows fit MiniMax M2.7 best?",
@@ -392,28 +463,32 @@ export const contactLinks = [
   {
     eyebrow: "Build",
     title: "API Platform",
-    description: "Open the official platform if you want to authenticate, manage access, and integrate M2.7 directly.",
+    description:
+      "Open the official platform when you want authentication, model access, and the shortest path to a direct MiniMax M2.7 integration.",
     cta: "Open API platform",
     href: officialLinks.apiPlatform,
   },
   {
     eyebrow: "Implement",
     title: "Developer Docs",
-    description: "Use the docs when you need request shapes, endpoint guidance, and integration examples.",
+    description:
+      "Use the docs for request shapes, endpoint guidance, and integration examples once you are past evaluation and ready to wire the model.",
     cta: "Open docs",
     href: officialLinks.developerDocs,
   },
   {
     eyebrow: "Evaluate",
     title: "MiniMax Agent",
-    description: "Use the agent surface when you want to feel the model in action before you build around it.",
+    description:
+      "Use the agent surface when you want to feel M2.7 in action before building your own product interface or CLI workflow around it.",
     cta: "Open agent",
     href: officialLinks.agent,
   },
   {
     eyebrow: "Study",
     title: "Public Model Page",
-    description: "Use the public M2.7 page when you want the launch narrative, benchmark framing, and public product positioning.",
+    description:
+      "Use the public model page when you want the launch narrative, benchmark framing, and product positioning that this site summarizes.",
     cta: "Read overview",
     href: officialLinks.modelOverview,
   },

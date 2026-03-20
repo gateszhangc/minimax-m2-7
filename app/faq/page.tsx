@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { FaqList } from "@/components/faq-list";
 import { Panel } from "@/components/marketing/panel";
@@ -59,18 +60,16 @@ export default function FaqPage() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-4">
-              <a
-                href={officialLinks.modelOverview}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/official-links"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
                   "h-12 rounded-full border-white/14 bg-white/4 px-6 text-sm font-semibold text-white hover:bg-white/9",
                 )}
               >
-                Read Overview
+                Official Links Hub
                 <ArrowUpRight className="size-4" />
-              </a>
+              </Link>
               <a
                 href={officialLinks.developerDocs}
                 target="_blank"

@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MiniMax M2.7
 
-## Getting Started
+Search-focused MiniMax M2.7 website built with Next.js 16 and shadcn/ui-style components.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Key commands:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run lint
+npm run test:e2e
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production deployment
 
-## Learn More
+Production route:
 
-To learn more about Next.js, take a look at the following resources:
+`github.com/gateszhangc/minimax-m2-7 -> main -> Dokploy project/app minimax-m2-7`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Runtime assumptions:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Build mode is `standalone`
+- Production URL is `https://minimax-m2-7.lol`
+- Dokploy is the only production deploy target
+- `www.minimax-m2-7.lol` should redirect to the apex domain
 
-## Deploy on Vercel
+## Analytics and SEO
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site expects these public env vars in production:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+NEXT_PUBLIC_WEB_URL=https://minimax-m2-7.lol
+NEXT_PUBLIC_PROJECT_NAME=minimax-m2-7
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-KSQ938VHFQ
+NEXT_PUBLIC_CLARITY_PROJECT_ID=vy0jj0bjwf
+```
+
+SEO baseline includes:
+
+- Unique page metadata
+- Canonical URLs
+- Open Graph and Twitter images
+- `robots.txt`
+- `sitemap.xml`
+- Structured data for website, webpages, breadcrumbs, and FAQ
+
+## Verification checklist
+
+- `npm run build`
+- `npm run test:e2e`
+- Verify `https://minimax-m2-7.lol`
+- Verify `https://minimax-m2-7.lol/robots.txt`
+- Verify `https://minimax-m2-7.lol/sitemap.xml`

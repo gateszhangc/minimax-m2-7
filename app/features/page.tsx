@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight, Bot, Braces, FilePenLine, Orbit, WandSparkles } from "lucide-react";
 import { Panel } from "@/components/marketing/panel";
 import { SectionHeading } from "@/components/marketing/section-heading";
@@ -116,18 +117,29 @@ export default function FeaturesPage() {
                 Start with the MiniMax M2.7 docs if you want direct API integration, then move to higher-speed access paths as workload grows.
               </h2>
             </div>
-            <a
-              href={officialLinks.developerDocs}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "h-12 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary/88",
-              )}
-            >
-              Open Developer Docs
-              <ArrowUpRight className="size-4" />
-            </a>
+            <div className="flex flex-wrap gap-4 lg:justify-end">
+              <a
+                href={officialLinks.developerDocs}
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "h-12 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary/88",
+                )}
+              >
+                Open Developer Docs
+                <ArrowUpRight className="size-4" />
+              </a>
+              <Link
+                href="/official-links"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "h-12 rounded-full border-white/14 bg-white/4 px-6 text-sm font-semibold text-white hover:bg-white/9",
+                )}
+              >
+                Official Links Hub
+              </Link>
+            </div>
           </Panel>
         </section>
       </div>
