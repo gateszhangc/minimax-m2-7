@@ -313,3 +313,17 @@ test("robots and sitemap expose the configured host", async ({ request }) => {
   expect(sitemapText).not.toContain("/contact</loc>");
   expect(sitemapText).toContain(sitemapHost);
 });
+
+test("www host permanently redirects to the apex canonical host", async ({ request }) => {
+  const response = await request.get("/", {
+    headers: {
+      Host: "www.minimax-m2-7.lol",
+      "X-Forwarded-Host": "www.minimax-m2-7.lol",
+      "X-Forwarded-Proto": "https",
+    },
+    maxRedirects: 0,
+  });
+
+  expect(response.status()).toBe(308);
+  expect(response.headers().location).toBe("https://minimax-m2-7.lol/");
+});
