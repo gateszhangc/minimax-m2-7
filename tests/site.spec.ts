@@ -214,7 +214,9 @@ test("page exposes generated favicon and icon links", async ({ page }) => {
 test("home exposes analytics, social metadata, and structured data", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.locator('link[rel="preload"][href*="googletagmanager.com/gtag/js?id="]')).toHaveCount(1);
+  await expect(
+    page.locator('link[rel="preload"][href*="googletagmanager.com/gtag/js?id=G-KSQ938VHFQ"]'),
+  ).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
     /\/opengraph-image/,
@@ -231,7 +233,9 @@ test("home exposes analytics, social metadata, and structured data", async ({ pa
   expect(websiteData.url).toMatch(/^https?:\/\//);
 
   const html = await page.content();
-  expect(html).toMatch(/gtag\('config', 'G-[A-Z0-9]+'\)/);
+  expect(html).toContain("G-KSQ938VHFQ");
+  expect(html).toContain("vy0jj0bjwf");
+  expect(html).toMatch(/gtag\('config', 'G-KSQ938VHFQ'\)/);
 });
 
 test("faq accordion renders with the first answer open", async ({ page }) => {
